@@ -34,7 +34,7 @@ body, html {
     position: relative;
 }
 
-/* FASE 1 */
+/* FASE 1: Interacción Inicial */
 .fase1-container {
     position: absolute;
     width: 100%; height: 100%;
@@ -44,15 +44,12 @@ body, html {
     z-index: 100;
     transition: opacity 0.8s ease;
 }
-
 .lirio-unico-grande { width: 90%; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
-
 .click-instruction {
     text-align: center; color: var(--gold);
     font-weight: bold; font-size: 1.2rem;
     animation: pulse 1.5s infinite;
 }
-
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
@@ -64,24 +61,24 @@ body, html {
 .fase-final { opacity: 0; visibility: hidden; transition: opacity 1s ease; height: 100%; }
 .show-fase { opacity: 1; visibility: visible; }
 
-/* TEXTOS */
+/* TEXTOS DEDICATORIA */
 .final-text-centered { text-align: center; font-weight: 700; }
 .final-text-centered p { font-size: 1rem; color: #444; margin: 8px 0; line-height: 1.4; }
 .letra-elegante { font-family: var(--font-fancy); font-size: 1.3rem !important; }
 .intro-frase-gold { font-size: 1rem; color: var(--gold); font-weight: bold; margin-bottom: 5px; }
 
+/* CONTADOR */
 .final-counter {
     margin-top: 15px; padding-top: 10px;
     border-top: 2px solid var(--gold);
     text-align: center;
 }
-
 #tiempo-amor { color: var(--gold); font-weight: bold; font-size: 1.1rem; }
 
-/* DISEÑO DE FOTO Y LIRIOS CENTRADOS */
+/* FOTO Y LIRIOS LATERALES */
 .layout-inferior {
     position: absolute;
-    bottom: 8%;
+    bottom: 12%; /* Altura ajustada según referencia */
     left: 0; width: 100%;
     display: flex; 
     justify-content: center; 
@@ -89,7 +86,7 @@ body, html {
 }
 
 .contenedor-foto {
-    width: 160px; height: 160px;
+    width: 165px; height: 165px;
     border: 4px solid var(--gold);
     border-radius: 15px;
     overflow: hidden;
@@ -99,41 +96,40 @@ body, html {
 
 .foto-completa {
     width: 100%; height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Centrado y sin bordes negros */
     object-position: center;
 }
 
 .ramo-lateral {
-    width: 130px;
+    width: 140px; /* Tamaño aumentado */
     height: auto;
     position: absolute;
 }
+.ramo-lateral.izq { left: -25px; transform: rotate(-8deg); }
+.ramo-lateral.der { right: -25px; transform: rotate(8deg); }
 
-.ramo-lateral.izq { left: -20px; transform: rotate(-5deg); }
-.ramo-lateral.der { right: -20px; transform: rotate(5deg); }
-
-/* LLUVIA AUMENTADA (Estilos para 7 flores) */
+/* LLUVIA DE LIRIOS (7 ELEMENTOS) */
 .flor-cayendo {
     position: absolute; 
-    width: 40px; /* Tamaño de las flores cayendo */
-    top: -50px;
-    animation: fall 7s linear infinite; /* Animación de caída */
+    width: 40px; 
+    top: -60px;
+    animation: fall 7s linear infinite;
     opacity: 0;
-    z-index: 5; /* Por detrás de la foto y textos principales */
+    z-index: 5;
 }
 
 @keyframes fall {
     0% { transform: translateY(0) rotate(0); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
-    100% { transform: translateY(800px) rotate(360deg); opacity: 0; }
+    100% { transform: translateY(850px) rotate(360deg); opacity: 0; }
 }
 
-/* Posiciones y retrasos aleatorios para las 7 flores */
+/* Distribución de la lluvia */
 .f1 { left: 5%; animation-delay: 1s; }
-.f2 { left: 20%; animation-delay: 4s; }
-.f3 { left: 35%; animation-delay: 0.5s; }
-.f4 { left: 50%; animation-delay: 2.5s; }
-.f5 { left: 65%; animation-delay: 5s; }
-.f6 { left: 80%; animation-delay: 1.5s; }
-.f7 { left: 92%; animation-delay: 3.5s; }
+.f2 { left: 22%; animation-delay: 4s; }
+.f3 { left: 38%; animation-delay: 0.5s; }
+.f4 { left: 52%; animation-delay: 2.5s; }
+.f5 { left: 68%; animation-delay: 5s; }
+.f6 { left: 82%; animation-delay: 1.5s; }
+.f7 { left: 95%; animation-delay: 3s; }
