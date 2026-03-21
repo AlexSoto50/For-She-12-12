@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores Amarillas</title>
+    <title>For You my love</title>
     <link rel="stylesheet" href="static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Segoe+UI:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -15,6 +15,7 @@
                 <div class="fase1-container" id="fase1">
                     <img src="static/flor_cayendo.png" class="lirio-unico-grande">
                     <p class="click-instruction">for you my love ⚜️❤️⚜️</p>
+                    <p style="font-size: 0.7rem; color: #d4a017; margin-top: 10px;">(Toca para empezar)</p>
                 </div>
 
                 <div class="fase-final" id="fase-final">
@@ -51,12 +52,12 @@
         </div>
     </div>
 
-    <audio id="musica" loop>
+    <audio id="musica" loop preload="auto">
         <source src="static/musica.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // Fecha de inicio: 12 de Diciembre de 2024
+        // Configuración de fecha
         const fechaInicio = new Date(2024, 11, 12, 0, 0); 
 
         const layer = document.getElementById('interaction-layer');
@@ -75,10 +76,19 @@
             contenedorTiempo.innerHTML = `${d} días ${h}h ${m}m ${s}s`;
         }
 
+        // Lógica de inicio con desbloqueo de audio
         layer.addEventListener('click', () => {
-            audio.play().catch(e => console.log("Audio bloqueado por el navegador"));
+            // Intentar reproducir audio inmediatamente al hacer clic
+            audio.play().then(() => {
+                console.log("Reproducción iniciada");
+            }).catch(error => {
+                console.log("Error de reproducción:", error);
+            });
+
+            // Cambiar de fase
             fase1.classList.add('hide-fase');
             faseFinal.classList.add('show-fase');
+            
             actualizarContador();
             setInterval(actualizarContador, 1000);
         }, { once: true });
