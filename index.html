@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="final-counter">
-                        <p class="intro-frase-gold">Mi amor por ti inicio hace años atras, pero todo comenzo hace...</p>
+                        <p class="intro-frase-gold">Mi amor por ti inicio hace muchos años atras, pero todo comenzo hace...</p>
                         <div id="tiempo-amor"></div>
                     </div>
 
@@ -56,7 +56,9 @@
     </audio>
 
     <script>
+        // Fecha de inicio: 12 de Diciembre de 2024
         const fechaInicio = new Date(2024, 11, 12, 0, 0); 
+
         const layer = document.getElementById('interaction-layer');
         const fase1 = document.getElementById('fase1');
         const faseFinal = document.getElementById('fase-final');
@@ -74,7 +76,7 @@
         }
 
         layer.addEventListener('click', () => {
-            audio.play().catch(e => console.log("Audio bloqueado"));
+            audio.play().catch(e => console.log("Audio bloqueado por el navegador"));
             fase1.classList.add('hide-fase');
             faseFinal.classList.add('show-fase');
             actualizarContador();
