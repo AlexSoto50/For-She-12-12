@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Amarillas</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Segoe+UI:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container" id="interaction-layer">
+        <div class="card">
+            <div class="content-wrapper">
+                
+                <div class="fase1-container" id="fase1">
+                    <img src="static/flor_cayendo.png" class="lirio-unico-grande">
+                    <p class="click-instruction">for you my love ⚜️❤️⚜️</p>
+                </div>
+
+                <div class="fase-final" id="fase-final">
+                    <div class="final-text-centered">
+                        <p class="to-my-love">To my love, She</p>
+                        <p class="letra-elegante">Yellow flowers for you, because you are my light.</p>
+                        <p class="letra-elegante">Lilies for you, because they represent your pure love.</p>
+                        <p class="letra-elegante">I love you more than words can express.</p>
+                        <p class="letra-elegante">-He-</p>
+                    </div>
+
+                    <div class="final-counter">
+                        <p class="intro-frase-gold">Mi amor por ti inicio hace años atras, pero todo comenzo hace...</p>
+                        <div id="tiempo-amor"></div>
+                    </div>
+
+                    <div class="layout-inferior">
+                        <img src="static/flores_arbol.png" class="ramo-lateral izq">
+                        <div class="contenedor-foto">
+                            <img src="static/su_foto.jpg" class="foto-completa">
+                        </div>
+                        <img src="static/flores_arbol.png" class="ramo-lateral der">
+                    </div>
+
+                    <img src="static/flor_cayendo.png" class="flor-cayendo f1">
+                    <img src="static/flor_cayendo.png" class="flor-cayendo f2">
+                    <img src="static/flor_cayendo.png" class="flor-cayendo f3">
+                    <img src="static/flor_cayendo.png" class="flor-cayendo f4">
+                    <img src="static/flor_cayendo.png" class="flor-cayendo f5">
+                    <img src="static/flor_cayendo.png" class="flor-cayendo f6">
+                    <img src="static/flor_cayendo.png" class="flor-cayendo f7">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="musica" loop>
+        <source src="static/musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const fechaInicio = new Date(2024, 11, 12, 0, 0); 
+        const layer = document.getElementById('interaction-layer');
+        const fase1 = document.getElementById('fase1');
+        const faseFinal = document.getElementById('fase-final');
+        const audio = document.getElementById('musica');
+        const contenedorTiempo = document.getElementById('tiempo-amor');
+
+        function actualizarContador() {
+            const ahora = new Date();
+            const diff = ahora - fechaInicio;
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            contenedorTiempo.innerHTML = `${d} días ${h}h ${m}m ${s}s`;
+        }
+
+        layer.addEventListener('click', () => {
+            audio.play().catch(e => console.log("Audio bloqueado"));
+            fase1.classList.add('hide-fase');
+            faseFinal.classList.add('show-fase');
+            actualizarContador();
+            setInterval(actualizarContador, 1000);
+        }, { once: true });
+    </script>
+</body>
+</html>
